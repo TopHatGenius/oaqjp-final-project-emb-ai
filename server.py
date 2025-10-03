@@ -20,6 +20,10 @@ def sent_analyzer():
     text_to_analyze = request.args.get('textToAnalyze')
 
     response = emotion_detector(text_to_analyze)
+
+    # Error handling for blank entries
+    if response['dominant_emotion'] is None:
+        return "Invalid text! Please try again!"
     
     #Formats the response as directed
     formatted_response = (
@@ -37,4 +41,3 @@ def sent_analyzer():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
-    
