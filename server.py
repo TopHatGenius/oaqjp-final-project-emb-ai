@@ -1,3 +1,4 @@
+""" Flask server for the Emotion Detector app """
 from flask import Flask, render_template, request
 from EmotionDetection import emotion_detector
 
@@ -24,7 +25,7 @@ def sent_analyzer():
     # Error handling for blank entries
     if response['dominant_emotion'] is None:
         return "Invalid text! Please try again!"
-    
+
     #Formats the response as directed
     formatted_response = (
         f"For the given statement, the system response is "
